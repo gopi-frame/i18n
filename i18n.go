@@ -1,9 +1,12 @@
 package i18n
 
 import (
+	"fmt"
 	"github.com/gopi-frame/contract/translator"
+	"github.com/gopi-frame/exception"
 	"github.com/nicksnyder/go-i18n/v2/i18n"
 	"golang.org/x/text/language"
+	"io"
 	"io/fs"
 	"net/http"
 )
@@ -157,10 +160,25 @@ func (i *I18n) LoadMessageRemoteRequest(req *http.Request, parser translator.Par
 			return err
 		}
 	}
-	return i.LoadMessage(&RemoteLoader{
-		Req:    req,
-		Client: client,
-	}, parser)
+	return i.LoadMessage(LoaderFunc(func() ([]byte, error) {
+		resp, err := client.Do(req)
+		if err != nil {
+			return nil, err
+		}
+		if resp.StatusCode != http.StatusOK {
+			return nil, exception.New(fmt.Sprintf("invalid status code responsed: %d", resp.StatusCode))
+		}
+		content, err := io.ReadAll(resp.Body)
+		if err != nil {
+			return nil, err
+		}
+		defer func() {
+			if err := resp.Body.Close(); err != nil {
+				panic(err)
+			}
+		}()
+		return content, nil
+	}), parser)
 }
 
 // LanguageTags returns the list of language tags of the bundle.
