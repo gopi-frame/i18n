@@ -1,8 +1,8 @@
 # Overview
 [![Go Reference](https://pkg.go.dev/badge/github.com/gopi-frame/i18n.svg)](https://pkg.go.dev/github.com/gopi-frame/i18n)
-[![Go](https://github.com/gopi-frame/i18n/actions/workflows/go.yaml/badge.svg)](https://github.com/gopi-frame/i18n/actions/workflows/go.yaml)
+[![Go](https://github.com/gopi-frame/i18n/actions/workflows/go.yml/badge.svg)](https://github.com/gopi-frame/i18n/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/gopi-frame/i18n)](https://goreportcard.com/report/github.com/gopi-frame/i18n)
-[![codecov](https://codecov.io/gh/gopi-frame/i18n/branch/main/graph/badge.svg?token=9EUOUXQ6PD)](https://codecov.io/gh/gopi-frame/i18n)
+[![codecov](https://codecov.io/gh/gopi-frame/i18n/graph/badge.svg?token=AQ4qBviH5M)](https://codecov.io/gh/gopi-frame/i18n)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 Package i18n provides an implementation of the i18n based on the [go-i18n](https://github.com/nicksnyder/go-i18n)
