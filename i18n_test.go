@@ -41,12 +41,12 @@ func TestI18n_T(t *testing.T) {
 			err = i.AddMessages("en", Message(&i18n.Message{
 				ID:          "greeting",
 				Description: "greeting",
-				Other:       "hello, {{.Name}}",
+				Other:       "hello, {{.name}}",
 			}))
 			if err != nil {
 				assert.FailNow(t, err.Error())
 			}
-			message := i.T("greeting", map[string]interface{}{"Name": "world"})
+			message := i.T("greeting", map[string]interface{}{"name": "world"})
 			assert.Equal(t, "hello, world", message)
 		}
 	})
@@ -100,15 +100,15 @@ func TestI18n_P(t *testing.T) {
 			err = i.AddMessages("en", Message(&i18n.Message{
 				ID:          "greeting",
 				Description: "greeting",
-				One:         "hello, {{.Name}}",
-				Other:       "hello, {{.Name}}2",
+				One:         "hello, {{.name}}",
+				Other:       "hello, {{.name}}2",
 			}))
 			if err != nil {
 				assert.FailNow(t, err.Error())
 			}
-			message := i.P("greeting", 1, map[string]interface{}{"Name": "world"})
+			message := i.P("greeting", 1, map[string]interface{}{"name": "world"})
 			assert.Equal(t, "hello, world", message)
-			message = i.P("greeting", 2, map[string]interface{}{"Name": "world"})
+			message = i.P("greeting", 2, map[string]interface{}{"name": "world"})
 			assert.Equal(t, "hello, world2", message)
 		}
 	})
@@ -187,7 +187,7 @@ func TestI18n_Locale(t *testing.T) {
 			err = i.AddMessages("en", Message(&i18n.Message{
 				ID:          "greeting",
 				Description: "greeting",
-				Other:       "hello, {{.Name}}",
+				Other:       "hello, {{.name}}",
 			}))
 			if err != nil {
 				assert.FailNow(t, err.Error())
@@ -195,13 +195,13 @@ func TestI18n_Locale(t *testing.T) {
 			err = i.AddMessages("zh", Message(&i18n.Message{
 				ID:          "greeting",
 				Description: "greeting",
-				Other:       "你好，{{.Name}}",
+				Other:       "你好，{{.name}}",
 			}))
 			if err != nil {
 				assert.FailNow(t, err.Error())
 			}
 			l := i.Locale("zh")
-			message := l.T("greeting", map[string]interface{}{"Name": "world"})
+			message := l.T("greeting", map[string]interface{}{"name": "world"})
 			assert.Equal(t, "你好，world", message)
 		}
 	})
