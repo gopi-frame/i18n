@@ -4,14 +4,15 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"github.com/gopi-frame/contract/translator"
-	"github.com/nicksnyder/go-i18n/v2/i18n"
-	"github.com/stretchr/testify/assert"
-	"golang.org/x/text/language"
 	"net/http"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/gopi-frame/contract/translator"
+	"github.com/nicksnyder/go-i18n/v2/i18n"
+	"github.com/stretchr/testify/assert"
+	"golang.org/x/text/language"
 )
 
 func TestI18n_T(t *testing.T) {
@@ -145,7 +146,7 @@ func TestI18n_M(t *testing.T) {
 				ID:          "test",
 				Description: "test",
 				Other:       "test one",
-			}))
+			}), nil)
 			assert.Equal(t, "test one", message)
 		}
 	})
